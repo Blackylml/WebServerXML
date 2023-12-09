@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MiServicio.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ValuesController : ControllerBase
+    {
+        [HttpGet]
+        [Produces("application/xml", "application/json")] // Especifica que el servicio produce XML
+        public ActionResult<string> ObtenerMensaje()
+        {
+            // Crea un objeto anónimo con el mensaje
+            var respuestaXml = new { Mensaje = "¡Hola desde mi servicio web!" };
+
+            // Devuelve un resultado OkObjectResult con el objeto anónimo
+            return Ok(respuestaXml);
+        }
+    }
+}
